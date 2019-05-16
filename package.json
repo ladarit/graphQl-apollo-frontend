@@ -11,8 +11,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-	"eject": "react-scripts eject",
-	"getGraphQLSchemeFromServer": "get-graphql-schema  http://localhost:63267/api/graphqlendpoint/getsheme   > ./schema.graphql"
+    "eject": "react-scripts eject",
+    "getGraphQLSchemeFromServer": "get-graphql-schema  http://localhost:63267/api/graphqlendpoint/getsheme   > ./schema.graphql"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,6 +30,7 @@
     ]
   },
   "devDependencies": {
-    "get-graphql-schema": "^2.1.2"
+    "get-graphql-schema": "^2.1.2",
+    "graphiql": "^0.13.0"
   }
 }
