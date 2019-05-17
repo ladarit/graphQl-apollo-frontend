@@ -4,7 +4,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-// var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const production = process.env.NODE_ENV === 'production';
 // const cssFolderPath = path.join(__dirname, './Source/css');
 // const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -18,11 +18,11 @@ module.exports = {
 		path: path.resolve(__dirname, './public/')		
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.ts', '.tsx'],
+		extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
 		modules: ['src', 'node_modules'],
-		// alias: {
-		// 	root: path.resolve(__dirname, './'),
-		// }
+		alias: {
+			root: path.resolve(__dirname, './src/'),
+		}
 	},
 	devServer: {
 		
@@ -41,6 +41,11 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			{
+				test: /\.mjs$/,
+				include: [path.resolve(__dirname, './node_modules')],
+				type: 'javascript/auto',
+			},
 			// js files
 			{
 				test: /\.js$/,
@@ -148,10 +153,11 @@ module.exports = {
 		// 	failOnError: true,
 		// 	syntax: "sass"|"scss"|"css"
 		// }),
-		// new LodashModuleReplacementPlugin,
+		new LodashModuleReplacementPlugin(),
 		new MiniCssExtractPlugin({filename:  "./main.css" }),
 		// new WebpackNotifierPlugin({alwaysNotify: true}),
 		// new FriendlyErrorsWebpackPlugin(),
+		new webpack.ContextReplacementPlugin(/graphql-language-service-interface[\/\\]dist/, /\.js$/),
 		new webpack.HashedModuleIdsPlugin(),
 		new WebpackCleanupPlugin({
 			exclude: ["index.html", "manifest.json", "favicon.ico"],

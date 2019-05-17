@@ -1,8 +1,8 @@
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-// const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const common = require('./webpack.config.js');
 const merge = require('webpack-merge');
-// const CompressionPlugin = require('compression-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
 // var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -24,12 +24,12 @@ module.exports = merge(common, {
 		// 	// }
 		// )		
 	],
-	// optimization: {
-	// 	minimizer: [
-	// 		new UglifyJsPlugin({
-	// 			parallel: true
-	// 		}),
-	// 		new OptimizeCSSAssetsPlugin({})
-	// 	]
-	// }
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				parallel: true
+			}),
+			new OptimizeCSSAssetsPlugin({})
+		]
+	}
 });

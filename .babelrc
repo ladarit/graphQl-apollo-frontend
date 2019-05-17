@@ -12,6 +12,12 @@
 		["@babel/plugin-transform-template-literals"],	
 		"@babel/plugin-syntax-typescript",						
 		"@babel/plugin-transform-runtime",		
-		//"transform-react-jsx"
+		//"transform-react-jsx",
+		[
+			"module-resolver", 
+			{
+				"root": ["./src"],
+			}
+		]
 	]
 }

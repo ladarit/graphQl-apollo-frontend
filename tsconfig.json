@@ -8,7 +8,7 @@
 		"preserveConstEnums": true,
 		"sourceMap": true,
 		"target": "es5",
-		"baseUrl": "./",
+		"baseUrl": "./src",
 		"paths": {
             "root/*": [ "*" ]
         },
@@ -20,7 +20,7 @@
 		// 	]
 	},
 	"include": [
-		"./src/*"
+		"./src/*", "src/containers/appContainer/App.test.js"
 	],
 	"exclude": [ "node_modules" ],
 	"compileOnSave": false
